@@ -1,69 +1,29 @@
 <template>
-  <div class="row">
-    <div class="item" v-for="(product,id) in products" v-bind:key="id">
-      <img :src="product.images.primary.large">
-      {{ product.general.name }}
-      <li class="product-id">Product id: {{ product.id }}</li>
-            <button class="cart-add">Add to cart</button>
-    </div>
-
-  </div>
+  <b-card
+    v-if="this.product"
+    :title="product.general.name"
+    :img-src="product.images.primary.large"
+    img-alt="Product image"
+    img-top
+    tag="article">
+    <b-card-text>{{product.id}}</b-card-text>
+    <!-- Póki co jest w przycisku prevent modala, trzeba dodac koszykowanie -->
+    <b-button pill variant="outline-success" v-on:click.stop="doThis">Add to cart</b-button>
+  </b-card>
 </template>
 
 <script>
-import axios from "axios";
-
 export default {
   name: "Item",
-
-  data() {
-    return {
-      products: []
-    };
-  },
-  watch: {
-    filters() {
-      this.fetchData();
-    }
-  },
-  methods: {
-    fetchData: function() {
-      const apiUrl = "http://localhost:3005/products";
-      axios({ method: "GET", url:apiUrl}).then(response => {
-        this.products = response.data;
-      },
-          error => {         
-        /* eslint-disable no-console */
-        console.error(error)
-        /* eslint-enable no-console */;
-    });
+  props: {
+    product: Object
   }
-    },
-    mounted() {
-      this.fetchData();
-    }
-  }
+};
 </script>
 
 <style scoped lang="scss">
-.row{
-  text-align: center;
-}
-.item{
-  width: 20%;
-  height: 20%;
-  display: inline-block;
-  margin: 40px;
-}
-img{
-  width: 100%;
-  height: 100%;
-}
-.cart-add {
-  margin-left: 20px;
-}
-.product-id{
-  font-size: 14px;
-  vertical-align: center;
+.card {
+  cursor: pointer;
+  padding: 15px;
 }
 </style>
