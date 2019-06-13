@@ -11,8 +11,8 @@
           id="search"
           class="my-2"
           size="sm"
-          placeholder="Filter your results"
-        ></b-form-input>
+          placeholder="Filter your results">
+          </b-form-input>
       </b-col>
     </b-row>
     <b-row>
@@ -29,7 +29,7 @@
         <Modal :product="product"/>
       </b-col>
     </b-row>
-      <b-row class="ml-5 mb-3">
+      <b-row class="mb-3">
         <b-col cols="12" md="8" offset-md="4">
         <b-button pill variant="outline-success" class="px-3 mr-1" @click="fetchData(pageCounter = 1)">First</b-button>
         <b-button class="px-4" pill variant="outline-success" @click="switchPage(false)">Prev</b-button>

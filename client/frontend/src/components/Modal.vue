@@ -9,6 +9,7 @@
       <b-form class="desc" v-html="product.general.description"></b-form>
     </b-modal>
 </template>
+
 <script>
 export default {
   name: "Modal",
@@ -23,7 +24,7 @@ export default {
   }
 };
 </script>
-<style>
+<style scoped lang="scss">
 .cart {
   float: right;
 }

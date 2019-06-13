@@ -13,7 +13,7 @@
           <td>{{ product.general.name }}</td>
           <td class="pl-3">{{ product.quantity }}</td>
           <td>
-            <b class="ml-4" title="Remove from cart" v-on:click="removeFromCart(product)">X</b>
+            <b class="ml-4 remove-btn" title="Remove from cart" v-on:click="removeFromCart(product)">X</b>
           </td>
         </tr>
       </tbody>
@@ -23,6 +23,7 @@
     <h2 class="ml-2" href>Your cart is empty</h2>
   </div>
 </template>
+
 <script>
 export default {
   methods: {
@@ -33,10 +34,14 @@ export default {
   }
 };
 </script>
-<style>
+
+<style scoped lang="scss">
 th {
   width: 100%;
   left: 0;
   right: 0;
+}
+.remove-btn {
+  cursor: pointer;
 }
 </style>

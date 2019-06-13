@@ -12,7 +12,6 @@ let store = {
     cart: cart ? JSON.parse(cart) : [],
     cartCount: cartCount ? parseInt(cartCount) : 0,
   },
-
   mutations: {
     addToCart(state, product) {
       let found = state.cart.find(item => item.id == product.id);
@@ -28,10 +27,14 @@ let store = {
     removeFromCart(state, product) {
       let index = state.cart.indexOf(product);
 
-      if (index > -1) {
+      if (index, product.quantity > 1) {
         let product = state.cart[index];
-        state.cartCount -= product.quantity;
+        --product.quantity;
+        --state.cartCount;
+      }
+      else {
         state.cart.splice(index, 1);
+        state.cartCount -= product.quantity;
       }
     },
     saveCart(state) {
